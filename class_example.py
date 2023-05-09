@@ -95,3 +95,66 @@ my_dog.bark() # output: Rex is barking.
 #Finally, we create an instance of the Dog class and call the bark() method on the instance.
 #When we call my_dog.bark(), self refers to the my_dog instance of the Dog class,
 #so the output is "Rex is barking."
+
+class Shoe:
+    # now our method has 4 parameters (including self)!
+    def __init__(self, brand, shoe_type, price):
+    	# we assign them accordingly
+        self.brand = brand
+        self.type = shoe_type
+        self.price = price
+        # the status is set to True by default
+        self.in_stock = True
+    
+    def on_sale_by_percent(self, percent_off):
+        self.price = self.price * (1-percent_off)
+
+# Create two shoe instances
+skater_shoe = Shoe("Vans", "Low-top Trainers", 59.99)
+dress_shoe = Shoe("Jack & Jill Bootery", "Ballet Flats", 29.99)
+print(skater_shoe.price)
+
+#skater shoe price on sale 20%
+skater_shoe.on_sale_by_percent(0.2)
+print(skater_shoe.price)
+
+#dress shoe price on sale by 10%
+dress_shoe.on_sale_by_percent(0.1)
+print(dress_shoe.price)
+
+#skater shoe on sale by another 10%
+skater_shoe.on_sale_by_percent(0.1)
+print(skater_shoe.price)
+
+#Another example 
+class Shoe:
+
+    def __init__(self, brand, shoe_type, price):
+        self.brand = brand
+        self.type = shoe_type
+        self.price = price
+        self.in_stock = True
+    
+    # Takes a float/percent as an argument and reduces the
+    # price of the item by that percentage.
+    def on_sale_by_percent(self, percent_off):
+        self.price = self.price * (1-percent_off)
+    
+    # Returns a total with tax added to the price.
+    def total_with_tax(self, tax_rate):
+        tax = self.price * tax_rate
+        total = self.price + tax
+        return total
+    
+    # Reduces the price by a fixed dollar amount.
+    def cut_price_by(self, amount):
+    	if amount < self.price:
+        	self.price -= amount
+    	else:
+    		print("Price deduction too large.")
+
+# Create some shoes. Call some methods on those shoes. Print your shoe's attributes..
+my_shoe = Shoe("Converse", "Low-tops", 36.00)
+print(my_shoe.total_with_tax(0.05))
+my_shoe.cut_price_by(10)
+print(my_shoe.price)
