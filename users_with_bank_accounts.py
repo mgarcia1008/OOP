@@ -32,15 +32,11 @@ class User:
         self.account = BankAccount(int_rate=0.02, balance=0)
     
     def make_deposit(self, amount):
-        self.account.balance += amount
+        self.account.deposit(amount) #using deposit which is calling deposit from line 7
         return self
 
-    def withdraw(self, amount):
-        if amount > self.account.balance:
-          print("Insufficient funds: Charging a $5 fee")
-          self.account.balance - 5
-        else: 
-            self.account.balance -= amount
+    def make_withdrawal(self, amount):
+        self.account.withdraw(amount) #using withdraw which is calling withdraw from line
         return self 
     
     def display_user_balance(self):
@@ -50,16 +46,10 @@ class User:
 mindi = User("Mindi Garcia", "mgarcia410@yahoo.com")
 peter = User("Peter Smith", "psmith@aol.com")
 
-mindi.make_deposit(500).withdraw(50).display_user_balance()
-peter.make_deposit(5000).withdraw(1000).display_user_balance()
+mindi.make_deposit(500).make_withdrawal(50).display_user_balance()
+peter.make_deposit(5000).make_withdrawal(1000).display_user_balance()
 
 
 
 
 
-
-'''checking = BankAccount(.10, 500)
-savings = BankAccount(.05, 1000)
-
-checking.deposit(100).deposit(200).deposit(500).withdraw(500).yield_interest().display_account_info()
-savings.deposit(200).deposit(1000).withdraw(200).withdraw(300).withdraw(500).withdraw(600).yield_interest().display_account_info()'''
