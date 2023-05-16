@@ -59,6 +59,4 @@ for athlete in players:
     new_team.append(Player(athlete)) 
 
 ninja_bonus = Player.get_team(players)
-
-
-
+print(ninja_bonus[2].age)
